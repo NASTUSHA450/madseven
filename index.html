@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        display: flex;
+    }
+
+    .box {
+        width: 250px;
+        height: 250px;
+        background: red;
+        color: white;
+        font-size: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0.5rem;
+    }
+
+    .flex-row.one {
+        display: flex;
+        flex-direction: column;
+        gap: 266px;
+    }
+
+    .flex-row.two {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+    }
+
+    .flex-row.three {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: start;
+    }
+
+    @media screen and (max-width:992px) {
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .flex-row.one,
+        .flex-row.two,
+        .flex-row.three {
+            display: flex;
+            flex-direction: row;
+            gap: 0;
+        }
+    }
+
+    @media screen and (max-width:500px) {
+        .flex-row {
+            display: block;
+        }
+    }
+</style>
+
+<body>
+    <div id="bl"></div>
+    <div class="container">
+        <div class="flex-row one">
+            <div class="box">1</div>
+            <div class="box">2</div>
+        </div>
+        <div class="flex-row two">
+            <div class="box">3</div>
+            <div class="box">4</div>
+        </div>
+        <div class="flex-row three">
+            <div class="box">5</div>
+            <div class="box">6</div>
+        </div>
+    </div>
+</body>
+<script>
+    let blocks = document.querySelectorAll(".box")
+    let colors = ['red', 'blue', 'green'];
+    let colInx = 0;
+    (function changeColor() {
+        document.querySelector("#bl").style.backgroundColor = colors[colInx++ % colors.length];
+        Array.prototype.slice.call( blocks ).map((el)=>{
+            el.style.backgroundColor = colors[colInx++ % colors.length]
+        })
+        setTimeout(changeColor, 1500);
+    })();
+
+
+</script>
+
+</html>
