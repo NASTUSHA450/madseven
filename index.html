@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <title>Document</title>
 </head>
 <style>
@@ -41,7 +46,7 @@
         justify-content: start;
     }
 
-    @media screen and (max-width:992px) {
+    @media screen and (max-width:724px) {
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -56,15 +61,63 @@
         }
     }
 
-    @media screen and (max-width:500px) {
+    @media screen and (max-width:375) {
         .flex-row {
             display: block;
         }
     }
+
+    .box {
+        font-family: monospace;
+        font-size: 3em;
+        animation: color-change 1.5s infinite;
+        font-family: "Roboto", sans-serif;
+    }
+
+    .box:nth-child(2n-1) {
+        animation: color-change1 1.5s infinite;
+    }
+
+    @keyframes color-change {
+        0% {
+            background-color: green;
+        }
+
+        25% {
+            background-color: red;
+        }
+
+        75% {
+            background-color: blue;
+        }
+
+        100% {
+            background-color: green;
+        }
+    }
+
+    @keyframes color-change1 {
+        0% {
+            background-color: red;
+        }
+
+        25% {
+            background-color: blue;
+        }
+
+        75% {
+            background-color: green;
+        }
+
+        100% {
+            background-color: red;
+        }
+    }
 </style>
 
+
 <body>
-    <div id="bl"></div>
+    <div id="bl">test</div>
     <div class="container">
         <div class="flex-row one">
             <div class="box">1</div>
@@ -81,18 +134,6 @@
     </div>
 </body>
 <script>
-    let blocks = document.querySelectorAll(".box")
-    let colors = ['red', 'blue', 'green'];
-    let colInx = 0;
-    (function changeColor() {
-        document.querySelector("#bl").style.backgroundColor = colors[colInx++ % colors.length];
-        Array.prototype.slice.call( blocks ).map((el)=>{
-            el.style.backgroundColor = colors[colInx++ % colors.length]
-        })
-        setTimeout(changeColor, 1500);
-    })();
-
-
 </script>
 
 </html>
